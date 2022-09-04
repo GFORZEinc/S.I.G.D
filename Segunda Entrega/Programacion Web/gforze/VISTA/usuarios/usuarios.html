@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $data["titulo"];?></title>
+</head>
+<body>
+<div> 
+    <div>
+        <h2><?php echo $data["titulo"]; ?></h2>
+        <a href="index.php?c=usuarios&a=nuevo">Agregar</a>
+
+        <table border="1" width="80%" class="table">
+            <thead>
+                <tr>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+
+                </tr>
+            </thead>
+            
+            <tbody>
+                <?php foreach($data["usuarios"] as $dato) {
+                    echo "<tr>";
+                    echo "<td>".$dato["ci"]."</td>";
+                    echo "<td>".$dato["nombre"]."</td>";
+                    echo "<td>".$dato["apellido"]."</td>";
+                    echo "<td>".$dato["fecha_nac"]."</td>";
+                    echo "<td><a href='index.php?c=usuarios&a=modificar&ci=".$dato["ci"]."' class='btn btn-warning'>Modificar</a></td>";
+					echo "<td><a href='index.php?c=usuarios&a=eliminar&ci=".$dato["ci"]."' class='btn btn-danger'>Eliminar</a></td>";
+				    echo "</tr>";
+                }
+                ?>
+            </tbody>
+            
+        </table>
+    </div>
+</div>
+</body>
+</html>
